@@ -13,7 +13,6 @@
       const parent = document.getElementById(self.randID).parentNode.parentNode;
       const element = document.getElementById(self.randID);
       textfit(parent, element);
-      console.log('ran');
     });
 
     // TODO: implement textfit function with binary search
@@ -30,8 +29,8 @@
       return (element.scrollWidth > element.offsetWidth || element.scrollHeight > element.offsetHeight);
     }
 
-    function guid() {
-      function s4() {
+    function guid () {
+      function s4 () {
         return Math.floor((1 + Math.random()) * 0x10000)
           .toString(16)
           .substring(1);
