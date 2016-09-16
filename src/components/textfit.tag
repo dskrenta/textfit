@@ -15,18 +15,20 @@
       textfit(parent, element);
     });
 
-    // TODO: implement textfit function with binary search
     function textfit (parent, element) {
-      let fontSize = minFontSize;
-      while (!isOverflowing(parent) && fontSize <= maxFontSize) {
-        fontSize++;
-        element.style.fontSize = fontSize;
+      let low = minFontSize;
+      let high = maxFontSize;
+      let mid = 0;
+      while (low <= high) {
+        mid = parseInt((low + high) / 2, 10);
+        element.style.fontSize = mid;
+        isOverflowing(parent) ? high = mid - 1 : low = mid + 1;
       }
-      element.style.fontSize = fontSize - 1;
+      element.style.fontSize = mid - 1;
     }
 
-    function isOverflowing (element) {
-      return (element.scrollWidth > element.offsetWidth || element.scrollHeight > element.offsetHeight);
+    function isOverflowing (parent) {
+      return (parent.offsetHeight < parent.scrollHeight || parent.offsetWidth < parent.scrollWidth);
     }
 
     function guid () {
