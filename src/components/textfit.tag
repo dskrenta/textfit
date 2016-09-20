@@ -4,14 +4,13 @@
   </span>
 
   <script>
-    this.randID = guid();
     const maxFontSize = parseInt(opts.maxfontsize);
     const minFontSize = parseInt(opts.minfontsize);
     const self = this;
 
     this.on('mount', () => {
-      const parent = document.getElementById(self.randID).parentNode.parentNode;
-      const element = document.getElementById(self.randID);
+      const parent = self.root.parentNode;
+      const element = self.root.children[0];
       textfit(parent, element);
     });
 
@@ -29,15 +28,6 @@
 
     function isOverflowing (parent) {
       return (parent.offsetHeight < parent.scrollHeight || parent.offsetWidth < parent.scrollWidth);
-    }
-
-    function guid () {
-      function s4 () {
-        return Math.floor((1 + Math.random()) * 0x10000)
-          .toString(16)
-          .substring(1);
-      }
-      return s4() + s4() + '-' + s4() + '-' + s4() + '-' + s4() + '-' + s4() + s4() + s4();
     }
   </script>
 </textfit>
