@@ -32,8 +32,6 @@
         if (multiline) {
           const count = wordWrap(ctx, text, 0, canvas.height, canvas.width, lineHeight);
           const textHeight = lineHeight * count;
-          console.log(textHeight);
-          console.log(canvas.height);
           if (textHeight > canvas.height) {
             high = mid - 1;
           } else {
