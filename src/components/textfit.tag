@@ -15,6 +15,7 @@
       const canvas = createCanvas(parent);
       const fontfamily = getStyle(parent, 'font-family');
       textfit(element, canvas, fontfamily);
+      removeElement(canvas);
     });
 
     function textfit (element, canvas, fontface) {
@@ -85,6 +86,10 @@
 
     function getStyle (element, property) {
       return window.getComputedStyle(element, null).getPropertyValue(property);
+    }
+
+    function removeElement (element) {
+      element.remove();
     }
   </script>
 </textfit>
