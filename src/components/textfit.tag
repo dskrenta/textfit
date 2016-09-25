@@ -6,7 +6,6 @@
   <script>
     const maxFontSize = parseInt(opts.maxfontsize);
     const minFontSize = parseInt(opts.minfontsize);
-    const fontface = opts.fontface;
     const multiline = opts.multiline;
     const self = this;
 
@@ -14,7 +13,8 @@
       const parent = self.root.parentNode;
       const element = self.root.children[0];
       const canvas = createCanvas(parent);
-      textfit(element, canvas, fontface);
+      const fontfamily = getStyle(parent, 'font-family');
+      textfit(element, canvas, fontfamily);
     });
 
     function textfit (element, canvas, fontface) {
@@ -81,6 +81,10 @@
       canvas.height = parent.offsetHeight;
       document.body.appendChild(canvas);
       return canvas;
+    }
+
+    function getStyle (element, property) {
+      return window.getComputedStyle(element, null).getPropertyValue(property);
     }
   </script>
 </textfit>
